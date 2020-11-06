@@ -1,3 +1,4 @@
+# Задание по программированию: Файл с магическими методами
 import os
 import tempfile
 import random
