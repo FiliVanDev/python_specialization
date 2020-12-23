@@ -5,11 +5,11 @@ import random
 class AbstractLevel:
     @classmethod
     def get_map(cls):
-        return cls.Map().get_map()
+        return cls.Map()
 
     @classmethod
-    def get_objects(cls, map_obj):
-        return cls.Objects().get_objects(map_obj)
+    def get_objects(cls):
+        return cls.Objects()
 
 
 class EasyLevel(AbstractLevel):
@@ -135,13 +135,19 @@ class HardLevel(AbstractLevel):
 
 def create_level(level):
     level_map = level.get_map()
-    level_obj = level.get_objects(level_map)
+    level_obj = level.get_objects()
     return level_map, level_obj
 
 
 level_map, level_obj = create_level(EasyLevel)
-print(f"Easy level map: {level_map}\nEasy level objects: {level_obj}")
+print(
+    f"Easy level map: {level_map.get_map()}\nEasy level objects: {level_obj.get_objects(level_map.get_map())}"
+)
 level_map, level_obj = create_level(MediumLevel)
-print(f"Medium level map: {level_map}\nMedium level objects: {level_obj}")
+print(
+    f"Medium level map: {level_map.get_map()}\nMedium level objects: {level_obj.get_objects(level_map.get_map())}"
+)
 level_map, level_obj = create_level(HardLevel)
-print(f"Hard level map: {level_map}\nHard level objects: {level_obj}")
+print(
+    f"Hard level map: {level_map.get_map()}\nHard level objects: {level_obj.get_objects(level_map.get_map())}"
+)
